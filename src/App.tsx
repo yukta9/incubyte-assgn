@@ -3,8 +3,15 @@ import { useState } from 'react';
 const App = () => {
   const [input, setInput] = useState('');
   const [result] = useState(null);
+  const [error, setError] = useState(false);
 
-  const handleCalculate = () => {};
+  const handleCalculate = () => {
+    if (input.trim() === '') {
+      setError(true);
+      return;
+    } 
+    setError(false);
+  };
 
   return (
     <div style={{ padding: '20px', backgroundColor: '#fff', color: '#aaa' }}>
@@ -25,6 +32,7 @@ const App = () => {
         onChange={(e) => setInput(e.target.value)}
       />
 
+      {error && <p style={{ color: 'red' }}>Error: Invalid input</p>}
       <div
         onClick={handleCalculate}
         data-testid='calculate-button'
