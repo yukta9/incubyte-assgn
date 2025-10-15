@@ -27,6 +27,7 @@ const App = () => {
 
       <div
         onClick={handleCalculate}
+        data-testid='calculate-button'
         style={{
           padding: '10px',
           backgroundColor: '#008cba',

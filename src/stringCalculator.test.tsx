@@ -10,4 +10,12 @@ describe('test cases for stringCalulator', () => {
         const element = await screen.findAllByText('String Calculator')
         expect(element).toBeTruthy();
     })
+    //red case secenario(I'll be adding validation in another commit)
+    it('button click should call handleCalculate', async () => {
+        render(<App />);
+        const button = await screen.getByTestId('calculate-button');
+        button.click();
+        const validationText = await screen.getAllByText('Input field cannot be empty');
+        expect(validationText).toBeTruthy();
+    })
 })
