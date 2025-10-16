@@ -8,6 +8,7 @@ const App = () => {
    const handleCalculate = () => {
     if (input.trim() === '') {
     setError(true);
+    setResult(null);
     return;
   }
   setError(false);
