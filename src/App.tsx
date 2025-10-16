@@ -2,14 +2,21 @@ import { useState } from 'react';
 
 const App = () => {
   const [input, setInput] = useState('');
-  const [result] = useState(null);
+  const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState(false);
 
   const handleCalculate = () => {
     if (input.trim() === '') {
       setError(true);
       return;
-    } 
+    }
+    let sum = 0;
+    for(const char of input){
+      if(!isNaN(Number(char))) {
+        sum += Number(char);
+      }
+    }
+    setResult(sum);
     setError(false);
   };
 

@@ -28,4 +28,5 @@ describe('test cases for stringCalulator', () => {
         const element = await screen.findAllByText('Result: 10');
         expect(element).toBeDefined();
     });
+    
 })
