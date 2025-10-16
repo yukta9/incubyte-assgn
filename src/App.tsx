@@ -5,19 +5,31 @@ const App = () => {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState(false);
 
-  const handleCalculate = () => {
+   const handleCalculate = () => {
     if (input.trim() === '') {
-      setError(true);
-      return;
-    }
-    let sum = 0;
-    for(const char of input){
-      if(!isNaN(Number(char))) {
-        sum += Number(char);
+    setError(true);
+    return;
+  }
+  setError(false);
+  let sum = 0;
+  let num: number | null = null;
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i];
+    const code = ch.charCodeAt(0);
+    if (code >= 48 && code <= 57) {
+      const digit = code - 48;
+      num = (num === null ? 0 : num) * 10 + digit;
+    } else {
+      if (num !== null) {
+        sum += num;
+        num = null;
       }
     }
-    setResult(sum);
-    setError(false);
+  }
+  if (num !== null) {
+    sum += num;
+  }
+  setResult(sum);
   };
 
   return (
