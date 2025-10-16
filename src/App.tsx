@@ -29,13 +29,14 @@ const App = () => {
         style={{ margin: '10px 0', color: '#aaa' }}
         placeholder='Enter numbers'
         value={input}
+        data-testid='input-field'
         onChange={(e) => setInput(e.target.value)}
       />
 
       {error && <p style={{ color: 'red' }}>Error: Invalid input</p>}
       <div
         onClick={handleCalculate}
-        data-testid='calculate-button'
+        data-testid='Calculate'
         style={{
           padding: '10px',
           backgroundColor: '#008cba',
