@@ -28,5 +28,13 @@ describe('test cases for stringCalulator', () => {
         const element = await screen.findAllByText('Result: 10');
         expect(element).toBeDefined();
     });
-    
+    it('Test case for custom input edgecase', async () => {
+        render(<App/>);
+        const inputField = await screen.findAllByTestId('input-field');
+        fireEvent.change(inputField[0], { target: { value: '1\n24)(9*1509po10' } });
+        const button = await screen.findAllByTestId('Calculate');
+        button[0].click();
+        const element = await screen.findAllByText('Result: 1553');
+        expect(element).toBeDefined();
+    });
 })
